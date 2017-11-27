@@ -16,6 +16,13 @@ public class ActivateLookedAtObjects : MonoBehaviour {
             out raycastHit, maxActivateDistance))
         {
             Debug.Log("Racast hit " + raycastHit.transform.name);
+
+            IActivatable objectLookedAt = raycastHit.transform.GetComponent<IActivatable>();
+
+            if (objectLookedAt != null && Input.GetButtonDown("Activate"))
+            {
+                objectLookedAt.DoActivate();
+            }
         }
 	}
 }
